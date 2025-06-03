@@ -21,23 +21,24 @@
 #include "oqs_prov.h"
 
 #ifdef NDEBUG
-#define OQS_PROV_PRINTF(a)
-#define OQS_PROV_PRINTF2(a, b)
-#define OQS_PROV_PRINTF3(a, b, c)
+#    define OQS_PROV_PRINTF(a)
+#    define OQS_PROV_PRINTF2(a, b)
+#    define OQS_PROV_PRINTF3(a, b, c)
 #else
-#define OQS_PROV_PRINTF(a)                                                     \
-    if (getenv("OQSPROV"))                                                     \
-    printf(a)
-#define OQS_PROV_PRINTF2(a, b)                                                 \
-    if (getenv("OQSPROV"))                                                     \
-    printf(a, b)
-#define OQS_PROV_PRINTF3(a, b, c)                                              \
-    if (getenv("OQSPROV"))                                                     \
-    printf(a, b, c)
+#    define OQS_PROV_PRINTF(a) \
+        if (getenv("OQSPROV")) \
+        printf(a)
+#    define OQS_PROV_PRINTF2(a, b) \
+        if (getenv("OQSPROV"))     \
+        printf(a, b)
+#    define OQS_PROV_PRINTF3(a, b, c) \
+        if (getenv("OQSPROV"))        \
+        printf(a, b, c)
 #endif // NDEBUG
 
 static STACK_OF(OPENSSL_STRING) *rt_disabled_algs = NULL;
-STACK_OF(OPENSSL_STRING) * oqsprov_get_rt_disabled_algs() {
+STACK_OF(OPENSSL_STRING) * oqsprov_get_rt_disabled_algs()
+{
     return rt_disabled_algs;
 }
 
@@ -56,9 +57,9 @@ extern OSSL_FUNC_provider_get_capabilities_fn oqs_provider_get_capabilities;
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START
 
 #ifdef OQS_KEM_ENCODERS
-#define OQS_OID_CNT 206
+#    define OQS_OID_CNT 208
 #else
-#define OQS_OID_CNT 136
+#    define OQS_OID_CNT 138
 #endif
 const char *oqs_oid_alg_list[OQS_OID_CNT] = {
 
@@ -234,6 +235,8 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "mayo5",
     "1.3.9999.8.5.4",
     "p521_mayo5",
+    "1.3.9999.1111.1.1",
+    "sqisign1",
     "1.3.6.1.4.1.62245.2.1.1.2",
     "CROSSrsdp128balanced",
     "1.3.9999.9.5.1",
@@ -275,7 +278,8 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END
 };
 
-int oqs_patch_oids(void) {
+int oqs_patch_oids(void)
+{
     ///// OQS_TEMPLATE_FRAGMENT_OID_PATCHING_START
     {
         const char *envval = NULL;
@@ -365,9 +369,9 @@ int oqs_patch_oids(void) {
         if ((envval = getenv("OQS_OID_P521_BIKEL5")))
             oqs_oid_alg_list[68] = envval;
 
-#define OQS_KEMOID_CNT 68 + 2
+#    define OQS_KEMOID_CNT 68 + 2
 #else
-#define OQS_KEMOID_CNT 0
+#    define OQS_KEMOID_CNT 0
 #endif /* OQS_KEM_ENCODERS */
         if ((envval = getenv("OQS_OID_MLDSA44")))
             oqs_oid_alg_list[0 + OQS_KEMOID_CNT] = envval;
@@ -467,71 +471,73 @@ int oqs_patch_oids(void) {
             oqs_oid_alg_list[94 + OQS_KEMOID_CNT] = envval;
         if ((envval = getenv("OQS_OID_P521_MAYO5")))
             oqs_oid_alg_list[96 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_CROSSRSDP128BALANCED")))
+        if ((envval = getenv("OQS_OID_SQISIGN1")))
             oqs_oid_alg_list[98 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_OV_IS_PKC")))
+        if ((envval = getenv("OQS_OID_CROSSRSDP128BALANCED")))
             oqs_oid_alg_list[100 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P256_OV_IS_PKC")))
+        if ((envval = getenv("OQS_OID_OV_IS_PKC")))
             oqs_oid_alg_list[102 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_OV_IP_PKC")))
+        if ((envval = getenv("OQS_OID_P256_OV_IS_PKC")))
             oqs_oid_alg_list[104 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P256_OV_IP_PKC")))
+        if ((envval = getenv("OQS_OID_OV_IP_PKC")))
             oqs_oid_alg_list[106 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_OV_IS_PKC_SKC")))
+        if ((envval = getenv("OQS_OID_P256_OV_IP_PKC")))
             oqs_oid_alg_list[108 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P256_OV_IS_PKC_SKC")))
+        if ((envval = getenv("OQS_OID_OV_IS_PKC_SKC")))
             oqs_oid_alg_list[110 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_OV_IP_PKC_SKC")))
+        if ((envval = getenv("OQS_OID_P256_OV_IS_PKC_SKC")))
             oqs_oid_alg_list[112 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P256_OV_IP_PKC_SKC")))
+        if ((envval = getenv("OQS_OID_OV_IP_PKC_SKC")))
             oqs_oid_alg_list[114 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_SNOVA2454")))
+        if ((envval = getenv("OQS_OID_P256_OV_IP_PKC_SKC")))
             oqs_oid_alg_list[116 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P256_SNOVA2454")))
+        if ((envval = getenv("OQS_OID_SNOVA2454")))
             oqs_oid_alg_list[118 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_SNOVA2454ESK")))
+        if ((envval = getenv("OQS_OID_P256_SNOVA2454")))
             oqs_oid_alg_list[120 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P256_SNOVA2454ESK")))
+        if ((envval = getenv("OQS_OID_SNOVA2454ESK")))
             oqs_oid_alg_list[122 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_SNOVA37172")))
+        if ((envval = getenv("OQS_OID_P256_SNOVA2454ESK")))
             oqs_oid_alg_list[124 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P256_SNOVA37172")))
+        if ((envval = getenv("OQS_OID_SNOVA37172")))
             oqs_oid_alg_list[126 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_SNOVA2455")))
+        if ((envval = getenv("OQS_OID_P256_SNOVA37172")))
             oqs_oid_alg_list[128 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P384_SNOVA2455")))
+        if ((envval = getenv("OQS_OID_SNOVA2455")))
             oqs_oid_alg_list[130 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_SNOVA2965")))
+        if ((envval = getenv("OQS_OID_P384_SNOVA2455")))
             oqs_oid_alg_list[132 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_P521_SNOVA2965")))
+        if ((envval = getenv("OQS_OID_SNOVA2965")))
             oqs_oid_alg_list[134 + OQS_KEMOID_CNT] = envval;
+        if ((envval = getenv("OQS_OID_P521_SNOVA2965")))
+            oqs_oid_alg_list[136 + OQS_KEMOID_CNT] = envval;
     } ///// OQS_TEMPLATE_FRAGMENT_OID_PATCHING_END
     return 1;
 }
 
-#define SIGALG(NAMES, SECBITS, FUNC)                                           \
-    {                                                                          \
-        NAMES, "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "",  \
-            FUNC                                                               \
+#define SIGALG(NAMES, SECBITS, FUNC)                                          \
+    {                                                                         \
+        NAMES, "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "", \
+            FUNC                                                              \
     }
-#define KEMBASEALG(NAMES, SECBITS)                                             \
-    {"" #NAMES "",                                                             \
-     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "",            \
+#define KEMBASEALG(NAMES, SECBITS)                                  \
+    {"" #NAMES "",                                                  \
+     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "", \
      oqs_generic_kem_functions},
 
-#define KEMHYBALG(NAMES, SECBITS)                                              \
-    {"" #NAMES "",                                                             \
-     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "",            \
+#define KEMHYBALG(NAMES, SECBITS)                                   \
+    {"" #NAMES "",                                                  \
+     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "", \
      oqs_hybrid_kem_functions},
 
-#define KEMKMALG(NAMES, SECBITS)                                               \
-    {"" #NAMES "",                                                             \
-     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "",            \
+#define KEMKMALG(NAMES, SECBITS)                                    \
+    {"" #NAMES "",                                                  \
+     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "", \
      oqs_##NAMES##_keymgmt_functions},
 
-#define KEMKMHYBALG(NAMES, SECBITS, HYBTYPE)                                   \
-    {"" #NAMES "",                                                             \
-     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "",            \
+#define KEMKMHYBALG(NAMES, SECBITS, HYBTYPE)                        \
+    {"" #NAMES "",                                                  \
+     "provider=oqsprovider,oqsprovider.security_bits=" #SECBITS "", \
      oqs_##HYBTYPE##_##NAMES##_keymgmt_functions},
 
 /* Functions provided by the core */
@@ -539,12 +545,12 @@ static OSSL_FUNC_core_gettable_params_fn *c_gettable_params = NULL;
 static OSSL_FUNC_core_get_params_fn *c_get_params = NULL;
 
 /* Parameters we provide to the core */
-static const OSSL_PARAM oqsprovider_param_types[] = {
-    OSSL_PARAM_DEFN(OSSL_PROV_PARAM_NAME, OSSL_PARAM_UTF8_PTR, NULL, 0),
-    OSSL_PARAM_DEFN(OSSL_PROV_PARAM_VERSION, OSSL_PARAM_UTF8_PTR, NULL, 0),
-    OSSL_PARAM_DEFN(OSSL_PROV_PARAM_BUILDINFO, OSSL_PARAM_UTF8_PTR, NULL, 0),
-    OSSL_PARAM_DEFN(OSSL_PROV_PARAM_STATUS, OSSL_PARAM_INTEGER, NULL, 0),
-    OSSL_PARAM_END};
+static const OSSL_PARAM oqsprovider_param_types[]
+    = {OSSL_PARAM_DEFN(OSSL_PROV_PARAM_NAME, OSSL_PARAM_UTF8_PTR, NULL, 0),
+       OSSL_PARAM_DEFN(OSSL_PROV_PARAM_VERSION, OSSL_PARAM_UTF8_PTR, NULL, 0),
+       OSSL_PARAM_DEFN(OSSL_PROV_PARAM_BUILDINFO, OSSL_PARAM_UTF8_PTR, NULL, 0),
+       OSSL_PARAM_DEFN(OSSL_PROV_PARAM_STATUS, OSSL_PARAM_INTEGER, NULL, 0),
+       OSSL_PARAM_END};
 
 static OSSL_ALGORITHM *oqsprovider_signatures_rt = NULL;
 
@@ -628,6 +634,9 @@ static const OSSL_ALGORITHM oqsprovider_signatures[] = {
 #ifdef OQS_ENABLE_SIG_mayo_5
     SIGALG("mayo5", 256, oqs_signature_functions),
     SIGALG("p521_mayo5", 256, oqs_signature_functions),
+#endif
+#ifdef OQS_ENABLE_SIG_sqisign_1
+    SIGALG("sqisign1", 128, oqs_signature_functions),
 #endif
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     SIGALG("CROSSrsdp128balanced", 128, oqs_signature_functions),
@@ -822,6 +831,9 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] = {
     SIGALG("mayo5", 256, oqs_mayo5_keymgmt_functions),
     SIGALG("p521_mayo5", 256, oqs_p521_mayo5_keymgmt_functions),
 #endif
+#ifdef OQS_ENABLE_SIG_sqisign_1
+    SIGALG("sqisign1", 128, oqs_sqisign1_keymgmt_functions),
+#endif
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     SIGALG("CROSSrsdp128balanced", 128, oqs_CROSSrsdp128balanced_keymgmt_functions),
 #endif
@@ -954,7 +966,8 @@ static const OSSL_ALGORITHM oqsprovider_decoder[] = {
 };
 
 // get the last number on the composite OID
-int get_composite_idx(char *name) {
+int get_composite_idx(char *name)
+{
     char *s = NULL;
     int i, len, ret = -1, count = 0;
 
@@ -985,23 +998,25 @@ int get_composite_idx(char *name) {
     return ret;
 }
 
-static const OSSL_PARAM *oqsprovider_gettable_params(void *provctx) {
+static const OSSL_PARAM *oqsprovider_gettable_params(void *provctx)
+{
     return oqsprovider_param_types;
 }
 
-#define OQS_PROVIDER_BASE_BUILD_INFO_STR                                       \
-    "OQS Provider v." OQS_PROVIDER_VERSION_STR OQS_PROVIDER_COMMIT             \
+#define OQS_PROVIDER_BASE_BUILD_INFO_STR                           \
+    "OQS Provider v." OQS_PROVIDER_VERSION_STR OQS_PROVIDER_COMMIT \
     " based on liboqs v." OQS_VERSION_TEXT
 
 #ifdef QSC_ENCODING_VERSION_STRING
-#define OQS_PROVIDER_BUILD_INFO_STR                                            \
-    OQS_PROVIDER_BASE_BUILD_INFO_STR                                           \
-    " using qsc-key-encoder v." QSC_ENCODING_VERSION_STRING
+#    define OQS_PROVIDER_BUILD_INFO_STR  \
+        OQS_PROVIDER_BASE_BUILD_INFO_STR \
+        " using qsc-key-encoder v." QSC_ENCODING_VERSION_STRING
 #else
-#define OQS_PROVIDER_BUILD_INFO_STR OQS_PROVIDER_BASE_BUILD_INFO_STR
+#    define OQS_PROVIDER_BUILD_INFO_STR OQS_PROVIDER_BASE_BUILD_INFO_STR
 #endif
 
-static int oqsprovider_get_params(void *provctx, OSSL_PARAM params[]) {
+static int oqsprovider_get_params(void *provctx, OSSL_PARAM params[])
+{
     OSSL_PARAM *p;
 
     p = OSSL_PARAM_locate(params, OSSL_PROV_PARAM_NAME);
@@ -1020,34 +1035,38 @@ static int oqsprovider_get_params(void *provctx, OSSL_PARAM params[]) {
     return 1;
 }
 
-int cnt_rt_disabled(const OSSL_ALGORITHM orig[], int len) {
+int cnt_rt_disabled(const OSSL_ALGORITHM orig[], int len)
+{
     int dcnt = 0;
 
     for (int i = 0; i < len - 1; i++)
         if (sk_OPENSSL_STRING_find(rt_disabled_algs,
-                                   (char *)orig[i].algorithm_names) >= 0)
+                                   (char *)orig[i].algorithm_names)
+            >= 0)
             dcnt++;
     return dcnt;
 }
 
-#define FILTERED_ALGS(algs)                                                    \
-    d_algs = cnt_rt_disabled(algs, OSSL_NELEM(algs));                          \
-    if (algs##_rt == NULL) {                                                   \
-        algs##_rt = OPENSSL_malloc(sizeof(OSSL_ALGORITHM) * OSSL_NELEM(algs) - \
-                                   d_algs);                                    \
-        n_cnt = 0;                                                             \
-        for (int i = 0; i < OSSL_NELEM(algs); i++) {                           \
-            if (sk_OPENSSL_STRING_find(rt_disabled_algs,                       \
-                                       (char *)algs[i].algorithm_names) < 0) { \
-                *(algs##_rt + n_cnt) = algs[i];                                \
-                n_cnt++;                                                       \
-            }                                                                  \
-        }                                                                      \
-    }                                                                          \
+#define FILTERED_ALGS(algs)                                                  \
+    d_algs = cnt_rt_disabled(algs, OSSL_NELEM(algs));                        \
+    if (algs##_rt == NULL) {                                                 \
+        algs##_rt = OPENSSL_malloc(sizeof(OSSL_ALGORITHM) * OSSL_NELEM(algs) \
+                                   - d_algs);                                \
+        n_cnt = 0;                                                           \
+        for (int i = 0; i < OSSL_NELEM(algs); i++) {                         \
+            if (sk_OPENSSL_STRING_find(rt_disabled_algs,                     \
+                                       (char *)algs[i].algorithm_names)      \
+                < 0) {                                                       \
+                *(algs##_rt + n_cnt) = algs[i];                              \
+                n_cnt++;                                                     \
+            }                                                                \
+        }                                                                    \
+    }                                                                        \
     return algs##_rt
 
 static const OSSL_ALGORITHM *oqsprovider_query(void *provctx, int operation_id,
-                                               int *no_cache) {
+                                               int *no_cache)
+{
     int d_algs, n_cnt;
     *no_cache = 1;
 
@@ -1070,7 +1089,8 @@ static const OSSL_ALGORITHM *oqsprovider_query(void *provctx, int operation_id,
     return NULL;
 }
 
-static void oqsprovider_teardown(void *provctx) {
+static void oqsprovider_teardown(void *provctx)
+{
     oqsx_freeprovctx((PROV_OQS_CTX *)provctx);
     OPENSSL_free(oqsprovider_signatures_rt);
     oqsprovider_signatures_rt = NULL;
@@ -1088,29 +1108,31 @@ static void oqsprovider_teardown(void *provctx) {
 }
 
 /* Functions we provide to the core */
-static const OSSL_DISPATCH oqsprovider_dispatch_table[] = {
-    {OSSL_FUNC_PROVIDER_TEARDOWN, (void (*)(void))oqsprovider_teardown},
-    {OSSL_FUNC_PROVIDER_GETTABLE_PARAMS,
-     (void (*)(void))oqsprovider_gettable_params},
-    {OSSL_FUNC_PROVIDER_GET_PARAMS, (void (*)(void))oqsprovider_get_params},
-    {OSSL_FUNC_PROVIDER_QUERY_OPERATION, (void (*)(void))oqsprovider_query},
-    {OSSL_FUNC_PROVIDER_GET_CAPABILITIES,
-     (void (*)(void))oqs_provider_get_capabilities},
-    {0, NULL}};
+static const OSSL_DISPATCH oqsprovider_dispatch_table[]
+    = {{OSSL_FUNC_PROVIDER_TEARDOWN, (void (*)(void))oqsprovider_teardown},
+       {OSSL_FUNC_PROVIDER_GETTABLE_PARAMS,
+        (void (*)(void))oqsprovider_gettable_params},
+       {OSSL_FUNC_PROVIDER_GET_PARAMS, (void (*)(void))oqsprovider_get_params},
+       {OSSL_FUNC_PROVIDER_QUERY_OPERATION, (void (*)(void))oqsprovider_query},
+       {OSSL_FUNC_PROVIDER_GET_CAPABILITIES,
+        (void (*)(void))oqs_provider_get_capabilities},
+       {0, NULL}};
 
 #ifdef OQS_PROVIDER_STATIC
-#define OQS_PROVIDER_ENTRYPOINT_NAME oqs_provider_init
+#    define OQS_PROVIDER_ENTRYPOINT_NAME oqs_provider_init
 #else
-#define OQS_PROVIDER_ENTRYPOINT_NAME OSSL_provider_init
+#    define OQS_PROVIDER_ENTRYPOINT_NAME OSSL_provider_init
 #endif // ifdef OQS_PROVIDER_STATIC
 
-static int algname_strcmp(const char *const *a, const char *const *b) {
+static int algname_strcmp(const char *const *a, const char *const *b)
+{
     return strcmp(*a, *b);
 }
 
 int OQS_PROVIDER_ENTRYPOINT_NAME(const OSSL_CORE_HANDLE *handle,
                                  const OSSL_DISPATCH *in,
-                                 const OSSL_DISPATCH **out, void **provctx) {
+                                 const OSSL_DISPATCH **out, void **provctx)
+{
     const OSSL_DISPATCH *orig_in = in;
     OSSL_FUNC_core_obj_create_fn *c_obj_create = NULL;
 
@@ -1268,9 +1290,10 @@ int OQS_PROVIDER_ENTRYPOINT_NAME(const OSSL_CORE_HANDLE *handle,
     */
 
     // if libctx not yet existing, create a new one
-    if (((corebiometh = oqs_bio_prov_init_bio_method()) == NULL) ||
-        ((libctx = OSSL_LIB_CTX_new_child(handle, orig_in)) == NULL) ||
-        ((*provctx = oqsx_newprovctx(libctx, handle, corebiometh)) == NULL)) {
+    if (((corebiometh = oqs_bio_prov_init_bio_method()) == NULL)
+        || ((libctx = OSSL_LIB_CTX_new_child(handle, orig_in)) == NULL)
+        || ((*provctx = oqsx_newprovctx(libctx, handle, corebiometh))
+            == NULL)) {
         OQS_PROV_PRINTF("OQS PROV: error creating new provider context\n");
         ERR_raise(ERR_LIB_USER, OQSPROV_R_LIB_CREATE_ERR);
         goto end_init;
@@ -1279,8 +1302,8 @@ int OQS_PROVIDER_ENTRYPOINT_NAME(const OSSL_CORE_HANDLE *handle,
     *out = oqsprovider_dispatch_table;
 
     // finally, warn if neither default nor fips provider are present:
-    if (!OSSL_PROVIDER_available(libctx, "default") &&
-        !OSSL_PROVIDER_available(libctx, "fips")) {
+    if (!OSSL_PROVIDER_available(libctx, "default")
+        && !OSSL_PROVIDER_available(libctx, "fips")) {
         OQS_PROV_PRINTF(
             "OQS PROV: Default and FIPS provider not available. Errors "
             "may result.\n");
