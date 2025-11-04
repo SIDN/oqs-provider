@@ -1738,22 +1738,22 @@ extern const OSSL_DISPATCH
 extern const OSSL_DISPATCH
     oqs_SubjectPublicKeyInfo_der_to_p521_mayo5_decoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_sqisign1_to_PrivateKeyInfo_der_encoder_functions[];
+    oqs_sqisignlvl1_to_PrivateKeyInfo_der_encoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_sqisign1_to_PrivateKeyInfo_pem_encoder_functions[];
+    oqs_sqisignlvl1_to_PrivateKeyInfo_pem_encoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_sqisign1_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
+    oqs_sqisignlvl1_to_EncryptedPrivateKeyInfo_der_encoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_sqisign1_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
+    oqs_sqisignlvl1_to_EncryptedPrivateKeyInfo_pem_encoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_sqisign1_to_SubjectPublicKeyInfo_der_encoder_functions[];
+    oqs_sqisignlvl1_to_SubjectPublicKeyInfo_der_encoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_sqisign1_to_SubjectPublicKeyInfo_pem_encoder_functions[];
-extern const OSSL_DISPATCH oqs_sqisign1_to_text_encoder_functions[];
+    oqs_sqisignlvl1_to_SubjectPublicKeyInfo_pem_encoder_functions[];
+extern const OSSL_DISPATCH oqs_sqisignlvl1_to_text_encoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_PrivateKeyInfo_der_to_sqisign1_decoder_functions[];
+    oqs_PrivateKeyInfo_der_to_sqisignlvl1_decoder_functions[];
 extern const OSSL_DISPATCH
-    oqs_SubjectPublicKeyInfo_der_to_sqisign1_decoder_functions[];
+    oqs_SubjectPublicKeyInfo_der_to_sqisignlvl1_decoder_functions[];
 extern const OSSL_DISPATCH
     oqs_CROSSrsdp128balanced_to_PrivateKeyInfo_der_encoder_functions[];
 extern const OSSL_DISPATCH
@@ -2132,7 +2132,7 @@ extern const OSSL_DISPATCH oqs_mayo3_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_p384_mayo3_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_mayo5_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_p521_mayo5_keymgmt_functions[];
-extern const OSSL_DISPATCH oqs_sqisign1_keymgmt_functions[];
+extern const OSSL_DISPATCH oqs_sqisignlvl1_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_CROSSrsdp128balanced_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_OV_Is_pkc_keymgmt_functions[];
 extern const OSSL_DISPATCH oqs_p256_OV_Is_pkc_keymgmt_functions[];

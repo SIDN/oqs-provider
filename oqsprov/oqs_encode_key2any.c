@@ -1246,9 +1246,9 @@ static int oqsx_pki_priv_to_der(const void *vxkey, unsigned char **pder)
 #define p521_mayo5_evp_type                     0
 #define p521_mayo5_input_type                   "p521_mayo5"
 #define p521_mayo5_pem_type                     "p521_mayo5"
-#define sqisign1_evp_type                       0
-#define sqisign1_input_type                     "sqisign1"
-#define sqisign1_pem_type                       "sqisign1"
+#define sqisignlvl1_evp_type                    0
+#define sqisignlvl1_input_type                  "sqisignlvl1"
+#define sqisignlvl1_pem_type                    "sqisignlvl1"
 #define CROSSrsdp128balanced_evp_type           0
 #define CROSSrsdp128balanced_input_type         "CROSSrsdp128balanced"
 #define CROSSrsdp128balanced_pem_type           "CROSSrsdp128balanced"
@@ -2582,13 +2582,13 @@ MAKE_ENCODER(, p521_mayo5, oqsx, PrivateKeyInfo, pem);
 MAKE_ENCODER(, p521_mayo5, oqsx, SubjectPublicKeyInfo, der);
 MAKE_ENCODER(, p521_mayo5, oqsx, SubjectPublicKeyInfo, pem);
 MAKE_TEXT_ENCODER(, p521_mayo5);
-MAKE_ENCODER(, sqisign1, oqsx, EncryptedPrivateKeyInfo, der);
-MAKE_ENCODER(, sqisign1, oqsx, EncryptedPrivateKeyInfo, pem);
-MAKE_ENCODER(, sqisign1, oqsx, PrivateKeyInfo, der);
-MAKE_ENCODER(, sqisign1, oqsx, PrivateKeyInfo, pem);
-MAKE_ENCODER(, sqisign1, oqsx, SubjectPublicKeyInfo, der);
-MAKE_ENCODER(, sqisign1, oqsx, SubjectPublicKeyInfo, pem);
-MAKE_TEXT_ENCODER(, sqisign1);
+MAKE_ENCODER(, sqisignlvl1, oqsx, EncryptedPrivateKeyInfo, der);
+MAKE_ENCODER(, sqisignlvl1, oqsx, EncryptedPrivateKeyInfo, pem);
+MAKE_ENCODER(, sqisignlvl1, oqsx, PrivateKeyInfo, der);
+MAKE_ENCODER(, sqisignlvl1, oqsx, PrivateKeyInfo, pem);
+MAKE_ENCODER(, sqisignlvl1, oqsx, SubjectPublicKeyInfo, der);
+MAKE_ENCODER(, sqisignlvl1, oqsx, SubjectPublicKeyInfo, pem);
+MAKE_TEXT_ENCODER(, sqisignlvl1);
 MAKE_ENCODER(, CROSSrsdp128balanced, oqsx, EncryptedPrivateKeyInfo, der);
 MAKE_ENCODER(, CROSSrsdp128balanced, oqsx, EncryptedPrivateKeyInfo, pem);
 MAKE_ENCODER(, CROSSrsdp128balanced, oqsx, PrivateKeyInfo, der);

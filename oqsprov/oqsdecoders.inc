@@ -358,9 +358,9 @@ DECODER_w_structure("frodo640aes", der, PrivateKeyInfo, frodo640aes),
     DECODER_w_structure("p521_mayo5", der, PrivateKeyInfo, p521_mayo5),
     DECODER_w_structure("p521_mayo5", der, SubjectPublicKeyInfo, p521_mayo5),
 #endif
-#ifdef OQS_ENABLE_SIG_sqisign_1
-    DECODER_w_structure("sqisign1", der, PrivateKeyInfo, sqisign1),
-    DECODER_w_structure("sqisign1", der, SubjectPublicKeyInfo, sqisign1),
+#ifdef OQS_ENABLE_SIG_sqisign_lvl1
+    DECODER_w_structure("sqisignlvl1", der, PrivateKeyInfo, sqisignlvl1),
+    DECODER_w_structure("sqisignlvl1", der, SubjectPublicKeyInfo, sqisignlvl1),
 #endif
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     DECODER_w_structure("CROSSrsdp128balanced", der, PrivateKeyInfo,

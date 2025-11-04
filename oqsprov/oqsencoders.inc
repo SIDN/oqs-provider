@@ -1073,14 +1073,16 @@ ENCODER_w_structure("frodo640aes", frodo640aes, der, PrivateKeyInfo),
     ENCODER_w_structure("p521_mayo5", p521_mayo5, pem, SubjectPublicKeyInfo),
     ENCODER_TEXT("p521_mayo5", p521_mayo5),
 #endif
-#ifdef OQS_ENABLE_SIG_sqisign_1
-    ENCODER_w_structure("sqisign1", sqisign1, der, PrivateKeyInfo),
-    ENCODER_w_structure("sqisign1", sqisign1, pem, PrivateKeyInfo),
-    ENCODER_w_structure("sqisign1", sqisign1, der, EncryptedPrivateKeyInfo),
-    ENCODER_w_structure("sqisign1", sqisign1, pem, EncryptedPrivateKeyInfo),
-    ENCODER_w_structure("sqisign1", sqisign1, der, SubjectPublicKeyInfo),
-    ENCODER_w_structure("sqisign1", sqisign1, pem, SubjectPublicKeyInfo),
-    ENCODER_TEXT("sqisign1", sqisign1),
+#ifdef OQS_ENABLE_SIG_sqisign_lvl1
+    ENCODER_w_structure("sqisignlvl1", sqisignlvl1, der, PrivateKeyInfo),
+    ENCODER_w_structure("sqisignlvl1", sqisignlvl1, pem, PrivateKeyInfo),
+    ENCODER_w_structure("sqisignlvl1", sqisignlvl1, der,
+                        EncryptedPrivateKeyInfo),
+    ENCODER_w_structure("sqisignlvl1", sqisignlvl1, pem,
+                        EncryptedPrivateKeyInfo),
+    ENCODER_w_structure("sqisignlvl1", sqisignlvl1, der, SubjectPublicKeyInfo),
+    ENCODER_w_structure("sqisignlvl1", sqisignlvl1, pem, SubjectPublicKeyInfo),
+    ENCODER_TEXT("sqisignlvl1", sqisignlvl1),
 #endif
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     ENCODER_w_structure("CROSSrsdp128balanced", CROSSrsdp128balanced, der,

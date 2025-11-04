@@ -487,8 +487,9 @@ int oqs_patch_codepoints()
     if (getenv("OQS_CODEPOINT_P521_MAYO5"))
         oqs_sigalg_list[48].code_point
             = atoi(getenv("OQS_CODEPOINT_P521_MAYO5"));
-    if (getenv("OQS_CODEPOINT_SQISIGN1"))
-        oqs_sigalg_list[49].code_point = atoi(getenv("OQS_CODEPOINT_SQISIGN1"));
+    if (getenv("OQS_CODEPOINT_SQISIGNLVL1"))
+        oqs_sigalg_list[49].code_point
+            = atoi(getenv("OQS_CODEPOINT_SQISIGNLVL1"));
     if (getenv("OQS_CODEPOINT_CROSSRSDP128BALANCED"))
         oqs_sigalg_list[50].code_point
             = atoi(getenv("OQS_CODEPOINT_CROSSRSDP128BALANCED"));
@@ -709,8 +710,9 @@ static const OSSL_PARAM oqs_param_sigalg_list[][12] = {
     OQS_SIGALG_ENTRY(mayo5, mayo5, mayo5, "1.3.9999.8.5.3", 47),
     OQS_SIGALG_ENTRY(p521_mayo5, p521_mayo5, p521_mayo5, "1.3.9999.8.5.4", 48),
 #    endif
-#    ifdef OQS_ENABLE_SIG_sqisign_1
-    OQS_SIGALG_ENTRY(sqisign1, sqisign1, sqisign1, "1.3.9999.1111.1.1", 49),
+#    ifdef OQS_ENABLE_SIG_sqisign_lvl1
+    OQS_SIGALG_ENTRY(sqisignlvl1, sqisignlvl1, sqisignlvl1, "1.3.9999.1111.1.1",
+                     49),
 #    endif
 #    ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     OQS_SIGALG_ENTRY(CROSSrsdp128balanced, CROSSrsdp128balanced,

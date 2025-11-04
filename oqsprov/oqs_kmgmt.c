@@ -1299,16 +1299,16 @@ static void *p521_mayo5_gen_init(void *provctx, int selection)
                          KEY_TYPE_HYB_SIG, 256, 48, 0);
 }
 
-static void *sqisign1_new_key(void *provctx)
+static void *sqisignlvl1_new_key(void *provctx)
 {
-    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_sqisign_1,
-                        "sqisign1", KEY_TYPE_SIG, NULL, 128, 49, 0);
+    return oqsx_key_new(PROV_OQS_LIBCTX_OF(provctx), OQS_SIG_alg_sqisign_lvl1,
+                        "sqisignlvl1", KEY_TYPE_SIG, NULL, 128, 49, 0);
 }
 
-static void *sqisign1_gen_init(void *provctx, int selection)
+static void *sqisignlvl1_gen_init(void *provctx, int selection)
 {
-    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_sqisign_1, "sqisign1",
-                         0, 128, 49, 0);
+    return oqsx_gen_init(provctx, selection, OQS_SIG_alg_sqisign_lvl1,
+                         "sqisignlvl1", 0, 128, 49, 0);
 }
 
 static void *CROSSrsdp128balanced_new_key(void *provctx)
@@ -1738,7 +1738,7 @@ MAKE_SIG_KEYMGMT_FUNCTIONS(mayo3)
 MAKE_SIG_KEYMGMT_FUNCTIONS(p384_mayo3)
 MAKE_SIG_KEYMGMT_FUNCTIONS(mayo5)
 MAKE_SIG_KEYMGMT_FUNCTIONS(p521_mayo5)
-MAKE_SIG_KEYMGMT_FUNCTIONS(sqisign1)
+MAKE_SIG_KEYMGMT_FUNCTIONS(sqisignlvl1)
 MAKE_SIG_KEYMGMT_FUNCTIONS(CROSSrsdp128balanced)
 MAKE_SIG_KEYMGMT_FUNCTIONS(OV_Is_pkc)
 MAKE_SIG_KEYMGMT_FUNCTIONS(p256_OV_Is_pkc)

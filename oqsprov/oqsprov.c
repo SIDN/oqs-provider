@@ -236,7 +236,7 @@ const char *oqs_oid_alg_list[OQS_OID_CNT] = {
     "1.3.9999.8.5.4",
     "p521_mayo5",
     "1.3.9999.1111.1.1",
-    "sqisign1",
+    "sqisignlvl1",
     "1.3.6.1.4.1.62245.2.1.1.2",
     "CROSSrsdp128balanced",
     "1.3.9999.9.5.1",
@@ -471,7 +471,7 @@ int oqs_patch_oids(void)
             oqs_oid_alg_list[94 + OQS_KEMOID_CNT] = envval;
         if ((envval = getenv("OQS_OID_P521_MAYO5")))
             oqs_oid_alg_list[96 + OQS_KEMOID_CNT] = envval;
-        if ((envval = getenv("OQS_OID_SQISIGN1")))
+        if ((envval = getenv("OQS_OID_SQISIGNLVL1")))
             oqs_oid_alg_list[98 + OQS_KEMOID_CNT] = envval;
         if ((envval = getenv("OQS_OID_CROSSRSDP128BALANCED")))
             oqs_oid_alg_list[100 + OQS_KEMOID_CNT] = envval;
@@ -635,8 +635,8 @@ static const OSSL_ALGORITHM oqsprovider_signatures[] = {
     SIGALG("mayo5", 256, oqs_signature_functions),
     SIGALG("p521_mayo5", 256, oqs_signature_functions),
 #endif
-#ifdef OQS_ENABLE_SIG_sqisign_1
-    SIGALG("sqisign1", 128, oqs_signature_functions),
+#ifdef OQS_ENABLE_SIG_sqisign_lvl1
+    SIGALG("sqisignlvl1", 128, oqs_signature_functions),
 #endif
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     SIGALG("CROSSrsdp128balanced", 128, oqs_signature_functions),
@@ -831,8 +831,8 @@ static const OSSL_ALGORITHM oqsprovider_keymgmt[] = {
     SIGALG("mayo5", 256, oqs_mayo5_keymgmt_functions),
     SIGALG("p521_mayo5", 256, oqs_p521_mayo5_keymgmt_functions),
 #endif
-#ifdef OQS_ENABLE_SIG_sqisign_1
-    SIGALG("sqisign1", 128, oqs_sqisign1_keymgmt_functions),
+#ifdef OQS_ENABLE_SIG_sqisign_lvl1
+    SIGALG("sqisignlvl1", 128, oqs_sqisignlvl1_keymgmt_functions),
 #endif
 #ifdef OQS_ENABLE_SIG_cross_rsdp_128_balanced
     SIGALG("CROSSrsdp128balanced", 128, oqs_CROSSrsdp128balanced_keymgmt_functions),
