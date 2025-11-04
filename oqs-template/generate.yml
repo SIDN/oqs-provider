@@ -1641,9 +1641,9 @@ sigs:
     family: 'SQIsign'
     variants:
       -
-        name: 'sqisign1'
-        pretty_name: 'SQIsign-1'
-        oqs_meth: 'OQS_SIG_alg_sqisign_1'
+        name: 'sqisignlvl1'
+        pretty_name: 'SQIsign-lvl1'
+        oqs_meth: 'OQS_SIG_alg_sqisign_lvl1'
         oid: '1.3.9999.1111.1.1' # XXX
         code_point: 65530 # XXX
         enable: true
