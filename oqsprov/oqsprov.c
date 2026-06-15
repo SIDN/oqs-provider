@@ -1097,8 +1097,8 @@ int cnt_rt_disabled(const OSSL_ALGORITHM orig[], int len) {
 static const OSSL_ALGORITHM *oqsprovider_query(void *provctx, int operation_id,
                                                int *no_cache) {
     int d_algs, n_cnt;
-    // do not cache when rt algo filter is enabled
-    *no_cache = rt_algo_filter_enabled;
+    // always cache for performance, ignore filtering
+    //*no_cache = rt_algo_filter_enabled;
 
     switch (operation_id) {
     case OSSL_OP_SIGNATURE:
