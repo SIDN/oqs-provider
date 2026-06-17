@@ -199,6 +199,7 @@
 | sphincsshake256ssimple **hybrid with** p521       | NIST Round 3 submission, v3.1 (June 10, 2022) | 3            |                    5 | 0xfecf       | 1.3.9999.6.9.13              |
 | sphincsshake256ssimple                            | NIST Round 3 submission                       | 3            |                    5 | 0xfe94       | 1.3.9999.6.9.7               |
 | sphincsshake256ssimple **hybrid with** p521       | NIST Round 3 submission                       | 3            |                    5 | 0xfe95       | 1.3.9999.6.9.8               |
+| sqisignlvl1                                       | Round 2                                       | 2            |                    1 | 65530        | 1.3.9999.1111.1.1            |
 | OV_Is                                             | NIST Round 2 (February 2025)                  | 2            |                    1 | 0xff0a       | 1.3.9999.9.1.1               |
 | OV_Is **hybrid with** p256                        | NIST Round 2 (February 2025)                  | 2            |                    1 | 0xff16       | 1.3.9999.9.1.2               |
 | OV_Ip                                             | NIST Round 2 (February 2025)                  | 2            |                    1 | 0xff0b       | 1.3.9999.9.2.1               |

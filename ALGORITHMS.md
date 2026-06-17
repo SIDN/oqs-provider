@@ -105,6 +105,7 @@ The following list of algorithms may change when loading oqsprovider (version >=
 | p384_mayo3 | 0xff38 |Yes| OQS_CODEPOINT_P384_MAYO3
 | mayo5 | 0xff35 |Yes| OQS_CODEPOINT_MAYO5
 | p521_mayo5 | 0xff39 |Yes| OQS_CODEPOINT_P521_MAYO5
+| sqisignlvl1 | 65530 |Yes| OQS_CODEPOINT_SQISIGNLVL1
 | CROSSrsdp128balanced | 0xff53 |Yes| OQS_CODEPOINT_CROSSRSDP128BALANCED
 | CROSSrsdp128fast | 0xff54 |No| OQS_CODEPOINT_CROSSRSDP128FAST
 | CROSSrsdp128small | 0xff55 |No| OQS_CODEPOINT_CROSSRSDP128SMALL
@@ -263,6 +264,7 @@ discussed in https://github.com/open-quantum-safe/oqs-provider/issues/351.
 | p384_mayo3 | 1.3.9999.8.3.4 |Yes| OQS_OID_P384_MAYO3
 | mayo5 | 1.3.9999.8.5.3 |Yes| OQS_OID_MAYO5
 | p521_mayo5 | 1.3.9999.8.5.4 |Yes| OQS_OID_P521_MAYO5
+| sqisignlvl1 | 1.3.9999.1111.1.1 |Yes| OQS_OID_SQISIGNLVL1
 | CROSSrsdp128balanced | 1.3.6.1.4.1.62245.2.1.1.2.2 |Yes| OQS_OID_CROSSRSDP128BALANCED
 | CROSSrsdp128fast | 1.3.6.1.4.1.62245.2.1.2.2.2 |No| OQS_OID_CROSSRSDP128FAST
 | CROSSrsdp128small | 1.3.6.1.4.1.62245.2.1.3.2.2 |No| OQS_OID_CROSSRSDP128SMALL
